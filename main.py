@@ -29,7 +29,7 @@ player_missile = pygame.image.load("player_missile_sprite.png").convert_alpha()
 player_missile = pygame.transform.scale(player_missile,(50,50))
 # Explosion frames
 missile_exlposion = pygame.image.load("tile003.png").convert_alpha()
-# missile_exlposion = pygame.transform.scale(missile_exlposion,(50,50))
+missile_exlposion = pygame.transform.scale(missile_exlposion,(100,100))
 
 # Set up the player
 player_rect = player_image.get_rect()
@@ -55,6 +55,18 @@ font = pygame.font.SysFont(None, 24)
 # Main game loop
 running = True
 while running:
+    
+    screen.fill((0, 0, 0))
+    screen.blit(backround_image, backround_rect)
+    screen.blit(player_image, player_rect)
+    for bullet_rect in bullet_list:
+        screen.blit(player_missile,bullet_rect)
+    for enemy_rect in enemy_list:
+        screen.blit(enemy_image, enemy_rect)
+    score_text = font.render("Score: " + str(score), True, (255, 255, 255))
+    screen.blit(score_text, (450, 10))
+    pv_text = font.render("Pv: " + str(player_pv), True, (255,255,255))
+    screen.blit(pv_text, (10,10))
 
     # Handle events
     for event in pygame.event.get():
@@ -100,7 +112,7 @@ while running:
     for bullet_rect in bullet_list:
         for enemy_rect in enemy_list:
             if bullet_rect.colliderect(enemy_rect) :
-                screen.blit(missile_exlposion,bullet_rect)
+                screen.blit(missile_exlposion,enemy_rect)
                 enemy_list.remove(enemy_rect)
                 bullet_list.remove(bullet_rect)
                 score += 1
@@ -111,19 +123,11 @@ while running:
         if player_rect.colliderect(enemy_rect):
             enemy_list.remove(enemy_rect)
             player_pv -= 5
-            
+    
+    if player_pv <= 0 :
+        running = False
+        
     # Draw the screen
-    screen.fill((0, 0, 0))
-    screen.blit(backround_image, backround_rect)
-    screen.blit(player_image, player_rect)
-    for bullet_rect in bullet_list:
-        screen.blit(player_missile,bullet_rect)
-    for enemy_rect in enemy_list:
-        screen.blit(enemy_image, enemy_rect)
-    score_text = font.render("Score: " + str(score), True, (255, 255, 255))
-    screen.blit(score_text, (450, 10))
-    pv_text = font.render("Pv: " + str(player_pv), True, (255,255,255))
-    screen.blit(pv_text, (10,10))
     pygame.display.flip()
 
 
