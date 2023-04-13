@@ -20,9 +20,27 @@ player_image = pygame.image.load("player.png").convert_alpha()
 
 # Load the enemy sprite
 enemy_image = pygame.image.load("enemy.png").convert_alpha()
+enemy_alt_image = pygame.image.load("enemy_alt.png").convert_alpha()
 
 # Load Beam sprite
 beam_image = pygame.image.load("beam.png").convert_alpha()
+
+# Load the life bar sprite
+life_bar_image = pygame.image.load("LifeBarFull.png").convert_alpha()
+life_bar_image1hit = pygame.image.load("LifeBar1hit.png").convert_alpha()
+life_bar_image2hit = pygame.image.load("LifeBar2hit.png").convert_alpha()
+life_bar_image3hit = pygame.image.load("LifeBar3hit.png").convert_alpha()
+life_bar_image4hit = pygame.image.load("LifeBar4hit.png").convert_alpha()
+life_bar_imageDead = pygame.image.load("LifeBarDead.png").convert_alpha()
+life_bar_imageFull = life_bar_image
+
+# Set up the life bar
+life_bar_size = (200,75)
+life_bar_image = pygame.transform.scale(life_bar_image,life_bar_size)
+life_bar_rect = life_bar_image.get_rect()
+life_bar_rect.left = 10
+life_bar_rect.top = 10
+player_pv = 25
 
 # Set up the player
 player_size = (75,75)
@@ -30,7 +48,6 @@ player_image = pygame.transform.scale(player_image,player_size)
 player_rect = player_image.get_rect()
 player_rect.centerx = width // 2
 player_rect.bottom = height - 10
-player_pv = 20
 player_speed = 7
 
 # Set up the bullets
@@ -44,21 +61,92 @@ skill_bullet_list = []
 skill_bullet_speed = 20
 q_cooldown = 0
 
-# Set up the enemies
+# Set up the normal enemies
 enemy_size = (40,40)
 enemy_image = pygame.transform.scale(enemy_image, enemy_size)
 enemy_list = []
 enemy_speed = 5
 enemy_spawn_rate = 60
-enemy_spawn_counter = 0
+enemy_spawn_counter = 60
+
+# Set up the normal enemies alternate
+enemy_alt_size = (80,80)
+enemy_alt_image = pygame.transform.scale(enemy_alt_image, enemy_alt_size)
+enemy_alt_list = []
+enemy_alt_speed = 1
+enemy_alt_spawn_rate = 300
+enemy_alt_spawn_counter = 300
 
 # Set up the score
 score = 0
 font = pygame.font.SysFont(None, 24)
 
+def update_life_bar(x):
+    x = pygame.transform.scale(x,life_bar_size)
+    screen.blit(x, life_bar_rect)
+    
+def truc(mob_rect,mob_list):
+    # Detect collisions bullet
+    for bullet_rect in bullet_list:
+        for mob_rect in mob_list:
+            if bullet_rect.colliderect(mob_rect):
+                mob_list.remove(mob_rect)
+                bullet_list.remove(bullet_rect)
+                if mob_rect == enemy_alt_rect:
+                    return int(3)
+                else:
+                    return int(1)
+                
+    # Detect collisions skills bullet
+    for skill_bullet_rect in skill_bullet_list:
+        for mob_rect in mob_list:
+            if skill_bullet_rect.colliderect(mob_rect):
+                mob_list.remove(mob_rect)
+                if mob_rect == enemy_alt_rect:
+                    return int(3)
+                else:
+                    return int(1)
+    
+    return int(0)
+
 # Main game loop
 running = True
 while running:
+    
+    while player_pv <= 0:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    running = True
+                    player_pv = 25
+                    score = 0
+                    enemy_list = []
+                    enemy_alt_list = []
+                    bullet_list = []
+                    skill_bullet_list = []
+                    q_cooldown = 0
+                    life_bar_image = life_bar_imageFull
+                elif event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    exit()
+                # Set up the game over message
+                game_over_text = font.render("Game Over", True, (255, 0, 0))
+                game_over_rect = game_over_text.get_rect(center=(width/2, height/2-20))
+                screen.blit(game_over_text, game_over_rect)
+                
+                final_score_text = font.render("Score final: " + str(score), True, (255, 255, 255))
+                final_score_rect = final_score_text.get_rect(center=(width/2, height/2+20))
+                screen.blit(final_score_text, final_score_rect)
+                
+                restart_text = font.render("Appuyez sur Entrée pour rejouer ou sur Echap pour quitter", True, (255, 255, 255))
+                restart_rect = restart_text.get_rect(center=(width/2, height/2+60))
+                screen.blit(restart_text, restart_rect)
+                
+                pygame.display.flip()
+                clock.tick(60)
 
     # Handle events
     for event in pygame.event.get():
@@ -102,6 +190,9 @@ while running:
     # Move the enemies
     for enemy_rect in enemy_list:
         enemy_rect.move_ip(0, enemy_speed)
+    
+    for enemy_alt_rect in enemy_alt_list:
+        enemy_alt_rect.move_ip(0,enemy_alt_speed)
 
     # Spawn new enemies
     enemy_spawn_counter += 1
@@ -111,47 +202,72 @@ while running:
         enemy_rect.top = -enemy_rect.height
         enemy_list.append(enemy_rect)
         enemy_spawn_counter = 0
-
-    # Detect collisions bullet
-    for bullet_rect in bullet_list:
-        for enemy_rect in enemy_list:
-            if bullet_rect.colliderect(enemy_rect):
-                enemy_list.remove(enemy_rect)
-                bullet_list.remove(bullet_rect)
-                score += 1
-                
-    # Detect collisions skills bullet
-    for skill_bullet_rect in skill_bullet_list:
-        for enemy_rect in enemy_list:
-            if skill_bullet_rect.colliderect(enemy_rect):
-                enemy_list.remove(enemy_rect)
-                score += 1
+    
+    enemy_alt_spawn_counter += 1
+    if enemy_alt_spawn_counter >= enemy_alt_spawn_rate:
+        enemy_alt_rect = enemy_alt_image.get_rect()
+        enemy_alt_rect.centerx = random.randint(0, width)
+        enemy_alt_rect.top = -enemy_alt_rect.height
+        enemy_alt_list.append(enemy_alt_rect)
+        enemy_alt_spawn_counter = 0
+        
+    score = score + truc(enemy_rect,enemy_list)   
+    score = score + truc(enemy_alt_rect,enemy_alt_list) 
 
     # Detect collisions player
     for enemy_rect in enemy_list:
         if player_rect.colliderect(enemy_rect):
             enemy_list.remove(enemy_rect)
             player_pv -= 5
+    
+    for enemy_alt_rect in enemy_alt_list:
+        if player_rect.colliderect(enemy_alt_rect):
+            enemy_alt_list.remove(enemy_alt_rect)
+            player_pv -= 10
             
     # Draw the screen
     screen.fill((0, 0, 0))
     screen.blit(bg,(0,0))
     screen.blit(player_image, player_rect)
+    
     # Draw bullet
     for bullet_rect in bullet_list:
         pygame.draw.rect(screen, (255, 255, 255), bullet_rect)
     for skill_bullet_rect in skill_bullet_list:
         screen.blit(beam_image, skill_bullet_rect)
+        
     # Render enemy
     for enemy_rect in enemy_list:
         screen.blit(enemy_image, enemy_rect)
+        
+    for enemy_alt_rect in enemy_alt_list:
+        screen.blit(enemy_alt_image, enemy_alt_rect)
+        
     # Draw score
     score_text = font.render("Score: " + str(score), True, (255, 255, 255))
     score_rect = score_text.get_rect(center=(width/2,20))
     screen.blit(score_text, score_rect)
+    
     # Draw life
-    pv_text = font.render("Pv: " + str(player_pv), True, (255,255,255))
-    screen.blit(pv_text, (10,10))
+    if player_pv >= 25:
+        life_bar_image = life_bar_imageFull
+        update_life_bar(life_bar_image)
+    elif player_pv >= 20:
+        life_bar_image = life_bar_image1hit
+        update_life_bar(life_bar_image)
+    elif player_pv >= 15:
+        life_bar_image = life_bar_image2hit
+        update_life_bar(life_bar_image)
+    elif player_pv >= 10:
+        life_bar_image = life_bar_image3hit
+        update_life_bar(life_bar_image)
+    elif player_pv >= 5:
+        life_bar_image = life_bar_image4hit
+        update_life_bar(life_bar_image)
+    elif player_pv <= 0:
+        life_bar_image = life_bar_imageDead
+        update_life_bar(life_bar_image)
+    
     # Drow cooldown
     if q_cooldown > 0:
         q_cooldown_rt = round(q_cooldown/60)
@@ -159,6 +275,7 @@ while running:
         q_skill_rect = q_skill_text.get_rect(center=(70,height-20))
         screen.blit(q_skill_text, q_skill_rect)
         q_cooldown -= 1
+        
     elif q_cooldown == 0:
         q_skill_text = font.render("Laser: q", True, (0,255,0))
         q_skill_rect = q_skill_text.get_rect(center=(70,height-20))
@@ -171,4 +288,3 @@ while running:
     
 # Clean up
 pygame.quit()
-
