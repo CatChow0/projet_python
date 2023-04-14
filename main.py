@@ -35,8 +35,9 @@ life_bar_imageDead = pygame.image.load("assets/LifeBarDead.png").convert_alpha()
 life_bar_imageShield = pygame.image.load("assets/LifeBarShield.png").convert_alpha()
 life_bar_imageFull = life_bar_image
 
-# Load the life bonus sprite
+# Load the bonus sprite
 life_bonus_image = pygame.image.load("assets/LifeBonus.png").convert_alpha()
+rocket_bonus_image = pygame.image.load("assets/RocketBonus.png").convert_alpha()
 
 # Set up the background
 bg_y = 0
@@ -92,6 +93,14 @@ life_bonus_list = []
 life_bonus_speed = 5
 life_bonus_spawn_rate = random.randint(600,1200)
 life_bonus_spawn_counter = 0
+
+# Set up the Rocket Bonus
+rocket_bonus_size = (40,40)
+rocket_bonus_image = pygame.transform.scale(rocket_bonus_image, rocket_bonus_size)
+rocket_bonus_list = []
+rocket_bonus_speed = 5
+rocket_bonus_spawn_rate = random.randint(10,60)
+rocket_bonus_spawn_counter = 0
 
 # Set up the score
 best_score = 0
@@ -215,6 +224,10 @@ while running:
     # Move the life bonus
     for life_bonus_rect in life_bonus_list:
         life_bonus_rect.move_ip(0,life_bonus_speed)
+        
+    # Move the rocket bonus
+    for rocket_bonus_rect in rocket_bonus_list:
+        rocket_bonus_rect.move_ip(0,rocket_bonus_speed)
 
     # Spawn new enemies
     enemy_spawn_counter += 1
@@ -240,10 +253,23 @@ while running:
     if life_bonus_spawn_counter >= life_bonus_spawn_rate:
         
         life_bonus_rect = life_bonus_image.get_rect()
-        life_bonus_rect.centerx = random.randint(10, (width -10))
+        life_bonus_rect.centerx = random.randint(10, (width - 10))
         life_bonus_rect.top = -life_bonus_rect.height
         life_bonus_list.append(life_bonus_rect)
+        life_bonus_spawn_rate = random.randint(600,1200)
         life_bonus_spawn_counter = 0
+        
+    # Spawn rocket bonus
+    rocket_bonus_spawn_counter += 1
+    if rocket_bonus_spawn_counter >= rocket_bonus_spawn_rate:
+        
+        rocket_bonus_rect = rocket_bonus_image.get_rect()
+        rocket_bonus_rect.centerx = random.randint(10, (width- 10))
+        rocket_bonus_rect.top = -rocket_bonus_rect.height
+        rocket_bonus_list.append(rocket_bonus_rect)
+        rocket_bonus_spawn_rate = random.randint(0,60)
+        rocket_bonus_spawn_counter = 0
+        
         
     score = score + truc(enemy_rect,enemy_list)   
     score = score + truc(enemy_alt_rect,enemy_alt_list) 
@@ -299,6 +325,10 @@ while running:
     # Render life bonus
     for life_bonus_rect in life_bonus_list:
         screen.blit(life_bonus_image, life_bonus_rect)
+    
+    # Render Rocket Bonus
+    for rocket_bonus_rect in rocket_bonus_list:
+        screen.blit(rocket_bonus_image, rocket_bonus_rect)
         
     # Draw score
     score_text = font.render("Score: " + str(score), True, (255, 255, 255))
