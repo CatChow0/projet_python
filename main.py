@@ -9,30 +9,38 @@ width, height = 1280, 720
 screen = pygame.display.set_mode((width, height))
 
 # Set up the background
-bg = pygame.image.load("background1.png").convert_alpha()
+bg = pygame.image.load("assets/background.png").convert()
 bg = pygame.transform.scale(bg, (width,height))
 
 # Set up the clock
 clock = pygame.time.Clock()
 
 # Load the player sprite
-player_image = pygame.image.load("player.png").convert_alpha()
+player_image = pygame.image.load("assets/player.png").convert_alpha()
 
 # Load the enemy sprite
-enemy_image = pygame.image.load("enemy.png").convert_alpha()
-enemy_alt_image = pygame.image.load("enemy_alt.png").convert_alpha()
+enemy_image = pygame.image.load("assets/enemy.png").convert_alpha()
+enemy_alt_image = pygame.image.load("assets/enemy_alt.png").convert_alpha()
 
 # Load Beam sprite
-beam_image = pygame.image.load("beam.png").convert_alpha()
+beam_image = pygame.image.load("assets/beam.png").convert_alpha()
 
 # Load the life bar sprite
-life_bar_image = pygame.image.load("LifeBarFull.png").convert_alpha()
-life_bar_image1hit = pygame.image.load("LifeBar1hit.png").convert_alpha()
-life_bar_image2hit = pygame.image.load("LifeBar2hit.png").convert_alpha()
-life_bar_image3hit = pygame.image.load("LifeBar3hit.png").convert_alpha()
-life_bar_image4hit = pygame.image.load("LifeBar4hit.png").convert_alpha()
-life_bar_imageDead = pygame.image.load("LifeBarDead.png").convert_alpha()
+life_bar_image = pygame.image.load("assets/LifeBarFull.png").convert_alpha()
+life_bar_image1hit = pygame.image.load("assets/LifeBar1hit.png").convert_alpha()
+life_bar_image2hit = pygame.image.load("assets/LifeBar2hit.png").convert_alpha()
+life_bar_image3hit = pygame.image.load("assets/LifeBar3hit.png").convert_alpha()
+life_bar_image4hit = pygame.image.load("assets/LifeBar4hit.png").convert_alpha()
+life_bar_imageDead = pygame.image.load("assets/LifeBarDead.png").convert_alpha()
+life_bar_imageShield = pygame.image.load("assets/LifeBarShield.png").convert_alpha()
 life_bar_imageFull = life_bar_image
+
+# Load the life bonus sprite
+life_bonus_image = pygame.image.load("assets/LifeBonus.png").convert_alpha()
+
+# Set up the background
+bg_y = 0
+scroll_speed = 3
 
 # Set up the life bar
 life_bar_size = (200,75)
@@ -77,7 +85,16 @@ enemy_alt_speed = 1
 enemy_alt_spawn_rate = 300
 enemy_alt_spawn_counter = 300
 
+# Set up the life bonus
+life_bonus_size = (40,40)
+life_bonus_image = pygame.transform.scale(life_bonus_image, life_bonus_size)
+life_bonus_list = []
+life_bonus_speed = 5
+life_bonus_spawn_rate = random.randint(600,1200)
+life_bonus_spawn_counter = 0
+
 # Set up the score
+best_score = 0
 score = 0
 font = pygame.font.SysFont(None, 24)
 
@@ -100,7 +117,7 @@ def truc(mob_rect,mob_list):
     # Detect collisions skills bullet
     for skill_bullet_rect in skill_bullet_list:
         for mob_rect in mob_list:
-            if skill_bullet_rect.colliderect(mob_rect):
+            if skill_bullet_rect.colliderect(mob_rect):   
                 mob_list.remove(mob_rect)
                 if mob_rect == enemy_alt_rect:
                     return int(3)
@@ -127,6 +144,7 @@ while running:
                     enemy_alt_list = []
                     bullet_list = []
                     skill_bullet_list = []
+                    life_bonus_list = []
                     q_cooldown = 0
                     life_bar_image = life_bar_imageFull
                 elif event.key == pygame.K_ESCAPE:
@@ -167,7 +185,7 @@ while running:
                     skill_bullet_rect.bottom = player_rect.top
                     skill_bullet_list.append(skill_bullet_rect)
                     q_cooldown = 600
-
+                    
     # Move the player
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and player_rect.left > 0:
@@ -193,26 +211,51 @@ while running:
     
     for enemy_alt_rect in enemy_alt_list:
         enemy_alt_rect.move_ip(0,enemy_alt_speed)
+        
+    # Move the life bonus
+    for life_bonus_rect in life_bonus_list:
+        life_bonus_rect.move_ip(0,life_bonus_speed)
 
     # Spawn new enemies
     enemy_spawn_counter += 1
     if enemy_spawn_counter >= enemy_spawn_rate:
+        
         enemy_rect = enemy_image.get_rect()
-        enemy_rect.centerx = random.randint(0, width)
+        enemy_rect.centerx = random.randint(10, (width-10))
         enemy_rect.top = -enemy_rect.height
         enemy_list.append(enemy_rect)
         enemy_spawn_counter = 0
     
     enemy_alt_spawn_counter += 1
     if enemy_alt_spawn_counter >= enemy_alt_spawn_rate:
+        
         enemy_alt_rect = enemy_alt_image.get_rect()
-        enemy_alt_rect.centerx = random.randint(0, width)
+        enemy_alt_rect.centerx = random.randint(10, (width-10))
         enemy_alt_rect.top = -enemy_alt_rect.height
         enemy_alt_list.append(enemy_alt_rect)
         enemy_alt_spawn_counter = 0
+    
+    # Spawn life bonus
+    life_bonus_spawn_counter += 1
+    if life_bonus_spawn_counter >= life_bonus_spawn_rate:
+        
+        life_bonus_rect = life_bonus_image.get_rect()
+        life_bonus_rect.centerx = random.randint(10, (width -10))
+        life_bonus_rect.top = -life_bonus_rect.height
+        life_bonus_list.append(life_bonus_rect)
+        life_bonus_spawn_counter = 0
         
     score = score + truc(enemy_rect,enemy_list)   
     score = score + truc(enemy_alt_rect,enemy_alt_list) 
+    
+    # Detect collisions life bonus
+    for life_bonus_rect in life_bonus_list:
+        if player_rect.colliderect(life_bonus_rect):
+            life_bonus_list.remove(life_bonus_rect)
+            if player_pv <= 25:
+                player_pv += 5
+            elif player_pv >= 30:
+                player_pv = 30
 
     # Detect collisions player
     for enemy_rect in enemy_list:
@@ -227,12 +270,22 @@ while running:
             
     # Draw the screen
     screen.fill((0, 0, 0))
-    screen.blit(bg,(0,0))
+    
+    # Move the background
+    bg_y += scroll_speed
+    if bg_y > bg.get_height():
+        bg_y = 0
+    
+    # Render the background
+    screen.blit(bg, (0, bg_y))
+    screen.blit(bg, (0, bg_y - bg.get_height()))
+
     screen.blit(player_image, player_rect)
     
     # Draw bullet
     for bullet_rect in bullet_list:
         pygame.draw.rect(screen, (255, 255, 255), bullet_rect)
+        
     for skill_bullet_rect in skill_bullet_list:
         screen.blit(beam_image, skill_bullet_rect)
         
@@ -243,13 +296,20 @@ while running:
     for enemy_alt_rect in enemy_alt_list:
         screen.blit(enemy_alt_image, enemy_alt_rect)
         
+    # Render life bonus
+    for life_bonus_rect in life_bonus_list:
+        screen.blit(life_bonus_image, life_bonus_rect)
+        
     # Draw score
     score_text = font.render("Score: " + str(score), True, (255, 255, 255))
     score_rect = score_text.get_rect(center=(width/2,20))
     screen.blit(score_text, score_rect)
     
     # Draw life
-    if player_pv >= 25:
+    if player_pv >= 30:
+        life_bar_image = life_bar_imageShield
+        update_life_bar(life_bar_image)
+    elif player_pv >= 25:
         life_bar_image = life_bar_imageFull
         update_life_bar(life_bar_image)
     elif player_pv >= 20:
