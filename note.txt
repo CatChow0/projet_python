@@ -1,0 +1,6 @@
+Collision ronde
+
+https://github.com/Rabbid76/PyGameExamplesAndAnswers/blob/master/documentation/pygame/pygame_collision_and_intesection.md
+
+test folder = animation
+
