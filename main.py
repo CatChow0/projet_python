@@ -1,5 +1,6 @@
 import pygame
 import random
+from animation import interactable, animatedList
 
 # Initialize Pygame
 pygame.init()
@@ -109,8 +110,9 @@ big_boom_list = []
 big_boom_speed = 20
 big_boum_count = 0
 
-# Set up the Rocket "Big boom" explosion
-
+# Set up the Rocket "Big boom" explosion radius
+big_boom_radius_size = (80,80)
+big_boom_radius_list = []
 
 # Set up the score
 best_score = 0
@@ -146,7 +148,8 @@ def Collision_ennemy_bullet(mob_rect,mob_list):
     # Detect collisions rocket "Big boom"
     for big_boom_rect in big_boom_list:
         for mob_rect in mob_list:
-            if big_boom_rect.colliderect(mob_rect):   
+            if big_boom_rect.colliderect(mob_rect):
+                animatedList.add(explosion)
                 mob_list.remove(mob_rect)
                 big_boom_list.remove(big_boom_rect)
                 if mob_rect == big_boom_rect:
@@ -158,6 +161,7 @@ def Collision_ennemy_bullet(mob_rect,mob_list):
 
 # Main game loop
 running = True
+
 while running:
     
     while player_pv <= 0:
@@ -177,7 +181,7 @@ while running:
                     life_bonus_list = []
                     q_cooldown = 0
                     big_boum_count = 0
-                    rocket_bonus_list = 0
+                    rocket_bonus_list = []
                     life_bar_image = life_bar_imageFull
                 elif event.key == pygame.K_ESCAPE:
                     pygame.quit()
@@ -197,7 +201,9 @@ while running:
                 
                 pygame.display.flip()
                 clock.tick(60)
-
+                
+                
+    explosion = interactable("explosion","Big_boom0",(big_boom_rect.centerx,big_boom_rect.bottom),20,3)
     # Handle events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -226,7 +232,7 @@ while running:
                     big_boom_rect.centerx = player_rect.centerx
                     big_boom_rect.bottom = player_rect.top
                     big_boom_list.append(big_boom_rect)
-                    big_boum_count -= 1           
+                    big_boum_count -= 1                 
                     
     # Move the player
     keys = pygame.key.get_pressed()
@@ -420,7 +426,7 @@ while running:
 
     # Draw rocket bonus count
     if big_boum_count > 0:
-        rocket_bonus_text = font.render("Big Boom: s\n( " + str(big_boum_count) + " Restant)", True, (0,255,0))
+        rocket_bonus_text = font.render("Big Boom: s ( " + str(big_boum_count) + " Restant)", True, (0,255,0))
         rocket_bonus_text_rect = rocket_bonus_text.get_rect(center=(1100,height-20))
         screen.blit(rocket_bonus_text,rocket_bonus_text_rect)
     

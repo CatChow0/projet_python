@@ -88,7 +88,17 @@ centerPos = (size[0]/2,size[1]/2)
 
 inputsys = inputSystem()
 background = animLoop("BG","bg0",(centerPos[0]-(540*spriteSize/2),centerPos[1]-(287 *spriteSize/2)),8)
-bedGarry = interactable("Bed","Zz0",(-200+centerPos[0]-(31*spriteSize/2),centerPos[1]-(44 *spriteSize/2)),3,20)
+
+bedGarry = interactable(
+    "Bed",
+    "Zz0",
+    (-200+centerPos[0]-(31*spriteSize/2),
+     centerPos[1]-(44 *spriteSize/2)
+    ),
+    3,
+    20
+)
+
 perso = entity("Garry","Gf0",(centerPos[0]-(18*spriteSize/2),centerPos[1]-(26 *spriteSize/2)),4)
 
 while running:
