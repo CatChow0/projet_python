@@ -26,8 +26,22 @@ class enemy(entity) :
         self.hp = hp
         super().__init__(image_name,scaleSize,speed)
 
-    #def __onDest__(self,hp) :
-    #    if hp <= 0 :
+    def __onDest__(self,hp,score) :
+        if hp <= 0 :
+            score += 1
+
+class boss(enemy) :
+    def __init__(self, image_name, scaleSize, hp, speed,shootSpeed,score):
+        self.aS = shootSpeed
+        super().__init__(image_name, scaleSize, hp, speed)
+    
+    def __onDest__(self, hp):
+        super().__onDest__(hp)
+    
+    def shoot_pattern(playerPos,shootSpeed,projectileBoss):
+        
+
+
 
 class player(entity) :
     def __init__(self, image_name, scaleSize, hp,speed,attackSpeed):
@@ -35,3 +49,5 @@ class player(entity) :
         self.attackSpeed = attackSpeed
 
         super().__init__(image_name, scaleSize, speed)
+
+
