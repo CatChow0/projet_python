@@ -1,6 +1,6 @@
 import pygame
 import random
-from animation import interactable, animatedList
+from animation import Animation
 
 # Initialize Pygame
 pygame.init()
@@ -8,6 +8,9 @@ pygame.init()
 # Set up the display
 width, height = 1280, 720
 screen = pygame.display.set_mode((width, height))
+
+# Set Animation List
+currentAnimPlaying = []
 
 # Set up the background
 bg = pygame.image.load("assets/background.png").convert()
@@ -110,6 +113,9 @@ big_boom_list = []
 big_boom_speed = 20
 big_boum_count = 0
 
+explo_rect = pygame.image.load("assets/Big_boom0.png").convert_alpha()
+explo_rect = pygame.image.get_rect()
+
 # Set up the Rocket "Big boom" explosion radius
 big_boom_radius_size = (80,80)
 big_boom_radius_list = []
@@ -123,7 +129,7 @@ def update_life_bar(x):
     x = pygame.transform.scale(x,life_bar_size)
     screen.blit(x, life_bar_rect)
     
-def Collision_ennemy_bullet(mob_rect,mob_list):
+def Collision_ennemy_bullet(mob_rect,mob_list,mob_speed):
     # Detect collisions bullet
     for bullet_rect in bullet_list:
         for mob_rect in mob_list:
@@ -149,7 +155,18 @@ def Collision_ennemy_bullet(mob_rect,mob_list):
     for big_boom_rect in big_boom_list:
         for mob_rect in mob_list:
             if big_boom_rect.colliderect(mob_rect):
-                animatedList.add(explosion)
+                animTest = Animation(mob_rect.x,mob_rect.y,mob_speed)
+                currentAnimPlaying.append(animTest)
+                mob_list.remove(mob_rect)
+                big_boom_list.remove(big_boom_rect)
+                if mob_rect == big_boom_rect:
+                    return int(3)
+                else:
+                    return int(1)
+   
+        for mob_rect in mob_list:
+            if explo_rect.colliderect(mob_rect):
+                animTest = Animation(mob_rect.x,mob_rect.y,mob_speed)
                 mob_list.remove(mob_rect)
                 big_boom_list.remove(big_boom_rect)
                 if mob_rect == big_boom_rect:
@@ -158,12 +175,17 @@ def Collision_ennemy_bullet(mob_rect,mob_list):
                     return int(1)
     
     return int(0)
-
 # Main game loop
 running = True
 
 while running:
     
+    # explo_rect_list.append(animTest.rect)
+    for anim in currentAnimPlaying :
+        if not anim.updateTest() :
+            currentAnimPlaying.remove(anim)
+            explo_rect_list.remove(anim.rect)
+            
     while player_pv <= 0:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -202,8 +224,6 @@ while running:
                 pygame.display.flip()
                 clock.tick(60)
                 
-                
-    explosion = interactable("explosion","Big_boom0",(big_boom_rect.centerx,big_boom_rect.bottom),20,3)
     # Handle events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -314,8 +334,8 @@ while running:
         rocket_bonus_spawn_counter = 0
         
         
-    score = score + Collision_ennemy_bullet(enemy_rect,enemy_list)   
-    score = score + Collision_ennemy_bullet(enemy_alt_rect,enemy_alt_list) 
+    score = score + Collision_ennemy_bullet(enemy_rect,enemy_list,enemy_speed)   
+    score = score + Collision_ennemy_bullet(enemy_alt_rect,enemy_alt_list,enemy_alt_speed) 
     
     # Detect collisions life bonus
     for life_bonus_rect in life_bonus_list:
@@ -343,6 +363,8 @@ while running:
             enemy_alt_list.remove(enemy_alt_rect)
             player_pv -= 10
             
+    
+    
     # Draw the screen
     screen.fill((0, 0, 0))
     
@@ -374,6 +396,10 @@ while running:
         
     for enemy_alt_rect in enemy_alt_list:
         screen.blit(enemy_alt_image, enemy_alt_rect)
+        
+    # Update le rendu de BigGoom
+    for anim in currentAnimPlaying :
+        screen.blit(anim.image, anim.rect.center)
         
     # Render life bonus
     for life_bonus_rect in life_bonus_list:
