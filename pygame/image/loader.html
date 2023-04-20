@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retina-ready Image Lazy Loader Plugin - jQuery lazy-images | Free jQuery Plugins</title>
+<meta name="keywords" content="jquery Loading plugin,lazy load">
+<meta name="description" content="lazy-images is a jQuery lazy loader plugin to boost the page load speed by delay the loading of images until they're scrolled into view.">
+<link href="/css/app.2022.test.min.css?v=202209282154" rel="stylesheet">
+<link href="/codepretty/styles/shCoreDefault.css" rel="stylesheet">
+<link type="application/atom+xml" rel="alternate" title="jQuery Plugins Feed" href="https://feeds.feedburner.com/jquery-script">
+<link rel="shortcut icon" href="https://www.jqueryscript.net/images/favicon.ico">
+<link rel="canonical" href="https://www.jqueryscript.net/loading/retina-image-lazy-loader.html">
+<link rel="next" href="https://www.jqueryscript.net/loading/loading-indicators-jajaxloader.html">
+<link rel="prev" href="https://www.jqueryscript.net/loading/performance-youtube-video-embed.html">
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<!--[if lte IE 7]>
+<link href="css/ie.css" rel="stylesheet" type="text/css">
+<![endif]-->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retina-ready Image Lazy Loader Plugin - jQuery lazy-images">
+<meta property="og:description" content="lazy-images is a jQuery lazy loader plugin to boost the page load speed by delay the loading of images until they're scrolled into view.">
+<meta property="og:url" content="https://www.jqueryscript.net/loading/retina-image-lazy-loader.html">
+<meta property="og:site_name" content="jQuery Script">
+<meta property="og:image" content="https://www.jqueryscript.net/images/retina-image-lazy-loader.jpg">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="300">
+</head>
+
+<body>
+<a href="#top" id="toTop"></a>
+<header role="banner">
+<div class="align-center">
+<div id="logo"><a href="https://www.jqueryscript.net/" title="jQuery Script Home">Free jQuery Plugins and Tutorials</a></div>
+<div class="search-box">
+<h2>jQuery Script - Free jQuery Plugins and Tutorials</h2>
+<form action="/plus/search.php" class="search-form" name="formsearch">
+<input type="hidden" name="kwtype" value="0" />
+<input class="search-text" name="keyword" type="text" id="search-keyword" placeholder="e.g. jQuery Slider" />
+<button class="search-button" type='submit'><span>Search</span></button>
+</form>
+</div>
+<div class="clear"></div>
+<nav role="navigation">
+<ul>
+<li><a href="https://www.jqueryscript.net/">Home</a></li>
+<li><a href="https://www.jqueryscript.net/categories/">Categories</a></li>
+<li><a href="https://www.jqueryscript.net/jquery-plugins/">Latest jQuery Plugins</a></li>
+<li><a href="https://www.jqueryscript.net/popular/">Most Popular Plugins</a></li>
+<li><a href="https://www.jqueryscript.net/recommended/">Recommended Plugins</a></li>
+<li><a href="https://www.jqueryscript.net/blog/">Blog</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<div id="container">
+<div class="col-left">
+<article class="post" role="main">
+<div class="bread-crumb" itemscope itemtype="http://schema.org/BreadcrumbList"><span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="https://www.jqueryscript.net" itemprop="item"><span itemprop="name">jQuery Plugins</span></a><meta itemprop="position" content="1" /></span> › <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="https://www.jqueryscript.net/loading/" itemprop="item"><span itemprop="name">jQuery Loading Plugins</span></a><meta itemprop="position" content="2" /></span> › <strong>jQuery lazy-images</strong></div>
+<h1><a href="https://www.jqueryscript.net/loading/retina-image-lazy-loader.html" rel="bookmark" title="Read 'Retina-ready Image Lazy Loader Plugin - jQuery lazy-images'">Retina-ready Image Lazy Loader Plugin - jQuery lazy-images</a></h1>
+<div style="margin-bottom:20px; text-align:center;min-height:280px;background:#fafafa"><div id="carbon-block"></div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2783044520727903"
+     crossorigin="anonymous"></script>
+<!-- jQuery_Below_Soft_Title -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2783044520727903"
+     data-ad-slot="5805800067"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div class="plugin-details">
+<table class="plugin-info">
+<tbody>
+<tr>
+<th width="126">File Size:</th>
+<td width="162">4.91 KB</td>
+</tr>
+<tr>
+<th>Views Total:</th>
+<td>2149</td>
+</tr>
+<tr>
+<th>Last Update:</th>
+<td><time class="timeago" itemprop="startDate" datetime="2020-02-11T01:11:00Z">02/11/2020 01:11:00 UTC</time></td>
+</tr>
+<tr>
+<th>Publish Date:</th>
+<td><time class="timeago" datetime="2019-01-14T03:30:51Z">01/14/2019 03:30:51 UTC</time></td>
+</tr>
+<tr>
+<th>Official Website:</th>
+<td><a href="https://github.com/michaelrosario/lazy-images" target="_blank" rel="nofollow">Go to website</a></td>
+</tr>
+<tr>
+<th>License:</th>
+<td>MIT</td>
+</tr>
+<tr>
+<th>&nbsp;</th>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="download-area">
+<div class="download-demo" align="center"><a href="/demo/retina-image-lazy-loader" title="Demo for Retina-ready Image Lazy Loader Plugin - jQuery lazy-images" rel="nofollow" target="_blank">Demo</a> <a href="https://www.jqueryscript.net/download/retina-image-lazy-loader.zip" class="link" rel="nofollow">Download</a></div>
+<p align="center" class="large-size"><a href="https://www.jqueryscript.net/loading/" rel="nofollow">More in this category...</a></p><p align="center" class="large-size"><a href="https://www.jqueryscript.net/recommended/" rel="nofollow">View Recommended Plugins</a></p><p align="center" class="large-size"><a href="https://www.jqueryscript.net/popular/2022.html">TOP 100 jQuery Plugins 2022</a></p></div>
+<div class="clear"></div>
+<div class="plugin-tags"><a href="javascript:;" class="tags-block">Chrome, IE9+, FireFox, Opera, Safari</a><a href="https://www.jqueryscript.net/tags.php?/lazy load/" class="tags-block">#lazy load</a>
+<div class="clear"></div>
+</div>
+<div class="entry">
+<img src="https://www.jqueryscript.net/images/retina-image-lazy-loader.jpg" alt="Retina-ready Image Lazy Loader Plugin - jQuery lazy-images" loading="lazy" />
+<div style="margin-bottom:20px;text-align:center"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2783044520727903"
+     crossorigin="anonymous"></script>
+<!-- jQuery_After_Featured_Img -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2783044520727903"
+     data-ad-slot="4056484568"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<p>lazy-images is a jQuery lazy loader plugin to boost the page load speed by delay the loading of images until they're scrolled into view.</p>
+<p>Supports retina images (@2x) and custom CSS styles.</p>
+<h2>See also:</h2>
+<ul>
+    <li><a href="https://www.jqueryscript.net/blog/Best-Lazy-Loading-jQuery-Plugins.html">10 Best Lazy Loading jQuery Plugins</a></li>
+    <li><a href="https://www.cssscript.com/top-10-lazy-loading-javascript-libraries/" target="_blank">Top 10 Lazy Loading JavaScript Libraries</a></li>
+</ul>
+<h2>How to use it:</h2>
+<p>1. Load the minified version of the&nbsp;jQuery lazy-images plugin after loading JQuery library.</p>
+<pre class="brush:xml;">&lt;script src=&quot;https://code.jquery.com/jquery-3.3.1.min.js&quot;
+        integrity=&quot;sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=&quot;
+        crossorigin=&quot;anonymous&quot;&gt;
+&lt;/script&gt;
+&lt;script src=&quot;./js/lazy-images.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+<p>2. Wrap the images into any elements as follows. Make sure the container element has the class name of &quot;lazy-images&quot;.</p>
+<ul>
+    <li><strong>data-class: </strong>additional CSS class(es)</li>
+    <li><strong>data-style: </strong>custom CSS styles</li>
+    <li><strong>data-image: </strong>path to the image</li>
+    <li><strong>data-retina: </strong>path to the retina image</li>
+    <li><strong>data-alt:</strong> alternative text</li>
+</ul>
+<pre class="brush:xml;">&lt;div class=&quot;example&quot;&gt;
+  &lt;span class=&quot;lazy-image&quot; 
+        data-class=&quot;yourClass&quot; 
+        data-style=&quot;border: 1px solid #000&quot;
+        data-image=&quot;/path/to/image.jpg&quot; 
+        data-retina=&quot;/path/to/<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a33373b3d3f1a682274302a3d">[email&#160;protected]</a>&quot;
+        data-alt=&quot;Image Alt&quot;&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+</pre>
+<p>3. Inert the original image to the <code>noscript</code> tag to loading the image normally when your users have disabled scripts in their browser.</p>
+<pre class="brush:xml;">&lt;noscript&gt;
+  &lt;img class=&quot;yourClass&quot; src=&quot;/path/to/image.jpg&quot; alt=&quot;Image Alt&quot;&gt;
+&lt;/noscript&gt;
+</pre>
+<p>4. Call the plugin on the top container. Done.</p>
+<pre class="brush:js;">$(document).ready(function(){
+  $(&quot;.example&quot;).lazyImages();
+});
+</pre>
+<h2>Changelog:</h2>
+<p>2020-02-11</p>
+<ul>
+    <li>bugfix</li>
+</ul>
+<p>2019-09-28</p>
+<ul>
+    <li>up<a href='https://www.jqueryscript.net/time-clock/'>date</a> heights on lazyload activation</li>
+</ul>
+<hr>
+<p class="more-usage">This awesome jQuery plugin is developed by <a href="https://www.jqueryscript.net/plus/search.php?keyword=michaelrosario" rel="nofollow">michaelrosario</a>. For more Advanced Usages, please check the <a href="/demo/retina-image-lazy-loader" rel="nofollow">demo page</a> or visit the official website.</p>
+<div class="ad-bottom"><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2783044520727903"
+     crossorigin="anonymous"></script>
+<!-- jQuery_336 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2783044520727903"
+     data-ad-slot="5649687997"
+     data-ad-format="auto"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<div class="prev-next">
+<ul><li>Prev: <a href='https://www.jqueryscript.net/loading/performance-youtube-video-embed.html'>Performance-focused Youtube Video Embed - jQuery embedVideo</a> </li>
+<li>Next: <a href='https://www.jqueryscript.net/loading/loading-indicators-jajaxloader.html'>10 Awesome Loading Indicators With jQuery And CSS - JAjaxLoader</a> </li></ul></div>
+</div>
+</article>
+<section class="related jqoverlay">
+<h3>Related jQuery Plugins</h3>
+<article>
+<figure><a class="vlightbox3" href="https://www.jqueryscript.net/images/lazy-loader-lightbox-gazeimg.jpg" title="Elegant Image Lazy Loader & Lightbox Plugin - jQuery GazeImg"><img src="https://www.jqueryscript.net/small/images/lazy-loader-lightbox-gazeimg.jpg" width="177" height="132" alt="Elegant Image Lazy Loader & Lightbox Plugin - jQuery GazeImg"></a></figure>
+<p><a href="https://www.jqueryscript.net/loading/lazy-loader-lightbox-gazeimg.html" rel="bookmark">Elegant Image Lazy Loader & Lightbox Plugin - jQuery GazeImg</a></p>
+</article>
+<article>
+<figure><a class="vlightbox3" href="https://www.jqueryscript.net/images/google-recaptcha-async.jpg" title="Speed Up Google reCAPTCHA With Lazy Load - Async Google reCAPTCHA"><img src="https://www.jqueryscript.net/small/images/google-recaptcha-async.jpg" width="177" height="132" alt="Speed Up Google reCAPTCHA With Lazy Load - Async Google reCAPTCHA"></a></figure>
+<p><a href="https://www.jqueryscript.net/loading/google-recaptcha-async.html" rel="bookmark">Speed Up Google reCAPTCHA With Lazy Load - Async Google reCAPTCHA</a></p>
+</article>
+<article>
+<figure><a class="vlightbox3" href="https://www.jqueryscript.net/images/google-maps-async.jpg" title="Speed Up Google Maps With Lazy Load - Async Google Maps"><img src="https://www.jqueryscript.net/small/images/google-maps-async.jpg" width="177" height="132" alt="Speed Up Google Maps With Lazy Load - Async Google Maps"></a></figure>
+<p><a href="https://www.jqueryscript.net/loading/google-maps-async.html" rel="bookmark">Speed Up Google Maps With Lazy Load - Async Google Maps</a></p>
+</article>
+<article>
+<figure><a class="vlightbox3" href="https://www.jqueryscript.net/images/load-images-after-page-postify.jpg" title="Load Images After The Page Has Loaded - jQuery Postify"><img src="https://www.jqueryscript.net/small/images/load-images-after-page-postify.jpg" width="177" height="132" alt="Load Images After The Page Has Loaded - jQuery Postify"></a></figure>
+<p><a href="https://www.jqueryscript.net/loading/load-images-after-page-postify.html" rel="bookmark">Load Images After The Page Has Loaded - jQuery Postify</a></p>
+</article>
+<article>
+<figure><a class="vlightbox3" href="https://www.jqueryscript.net/images/speed-up-lazy-Load.jpg" title="Speed Up Your Webpage By Lazy Loading Images - jQuery lazy-load"><img src="https://www.jqueryscript.net/small/images/speed-up-lazy-Load.jpg" width="177" height="132" alt="Speed Up Your Webpage By Lazy Loading Images - jQuery lazy-load"></a></figure>
+<p><a href="https://www.jqueryscript.net/loading/speed-up-lazy-Load.html" rel="bookmark">Speed Up Your Webpage By Lazy Loading Images - jQuery lazy-load</a></p>
+</article>
+<article>
+<figure><a class="vlightbox3" href="https://www.jqueryscript.net/images/lazy-loader-image-background.jpg" title="Simple Lazy Loader For Images & Backgrounds - lwcLazyLoader.js"><img src="https://www.jqueryscript.net/small/images/lazy-loader-image-background.jpg" width="177" height="132" alt="Simple Lazy Loader For Images & Backgrounds - lwcLazyLoader.js"></a></figure>
+<p><a href="https://www.jqueryscript.net/loading/lazy-loader-image-background.html" rel="bookmark">Simple Lazy Loader For Images & Backgrounds - lwcLazyLoader.js</a></p>
+</article>
+
+<div class="clear"></div>
+</section>
+<section class="related jqoverlay">
+<h3>You Might Also Like</h3>
+<article>
+<figure><a class="vlightbox3" href="https://www.jqueryscript.net/images/SVG-Progress-Bar-For-jQuery-JavaScript-Angular.jpg" title="Animated SVG Progress Bar For jQuery/JavaScript/Angular"><img src="https://www.jqueryscript.net/small/images/SVG-Progress-Bar-For-jQuery-JavaScript-Angular.jpg" width="177" height="132" alt="Animated SVG Progress Bar For jQuery/JavaScript/Angular"></a></figure>
+<p><a href="https://www.jqueryscript.net/loading/SVG-Progress-Bar-For-jQuery-JavaScript-Angular.html" rel="bookmark">Animated SVG Progress Bar For jQuery/JavaScript/Angular</a></p>
+</article>
+<article>
+<figure><a class="vlightbox3" href="https://www.jqueryscript.net/images/Minimal-AJAX-Loading-Spinner-Plugin-with-jQuery-pleaseWait.jpg" title="Minimal AJAX Loading Spinner Plugin with jQuery - pleaseWait"><img src="https://www.jqueryscript.net/small/images/Minimal-AJAX-Loading-Spinner-Plugin-with-jQuery-pleaseWait.jpg" width="177" height="132" alt="Minimal AJAX Loading Spinner Plugin with jQuery - pleaseWait"></a></figure>
+<p><a href="https://www.jqueryscript.net/loading/Minimal-AJAX-Loading-Spinner-Plugin-with-jQuery-pleaseWait.html" rel="bookmark">Minimal AJAX Loading Spinner Plugin with jQuery - pleaseWait</a></p>
+</article>
+<article>
+<figure><a class="vlightbox3" href="https://www.jqueryscript.net/images/jQuery-Plugin-For-Animated-Fullscreen-Page-Loader-Intro-Loader.jpg" title="jQuery Plugin For Animated Fullscreen Page Loader - Intro Loader"><img src="https://www.jqueryscript.net/small/images/jQuery-Plugin-For-Animated-Fullscreen-Page-Loader-Intro-Loader.jpg" width="177" height="132" alt="jQuery Plugin For Animated Fullscreen Page Loader - Intro Loader"></a></figure>
+<p><a href="https://www.jqueryscript.net/loading/jQuery-Plugin-For-Animated-Fullscreen-Page-Loader-Intro-Loader.html" rel="bookmark">jQuery Plugin For Animated Fullscreen Page Loader - Intro Loader</a></p>
+</article>
+<article>
+<figure><a class="vlightbox3" href="https://www.jqueryscript.net/images/infinite-scroll-iscroll.jpg" title="Infinite Scroll View Using jQuery XMLHttpRequest - Simple iScroll"><img src="https://www.jqueryscript.net/small/images/infinite-scroll-iscroll.jpg" width="177" height="132" alt="Infinite Scroll View Using jQuery XMLHttpRequest - Simple iScroll"></a></figure>
+<p><a href="https://www.jqueryscript.net/loading/infinite-scroll-iscroll.html" rel="bookmark">Infinite Scroll View Using jQuery XMLHttpRequest - Simple iScroll</a></p>
+</article>
+<article>
+<figure><a class="vlightbox3" href="https://www.jqueryscript.net/images/reload-content-sync-ajax.jpg" title="Load Content Synchronously Via AJAX - jQuery Reload"><img src="https://www.jqueryscript.net/small/images/reload-content-sync-ajax.jpg" width="177" height="132" alt="Load Content Synchronously Via AJAX - jQuery Reload"></a></figure>
+<p><a href="https://www.jqueryscript.net/loading/reload-content-sync-ajax.html" rel="bookmark">Load Content Synchronously Via AJAX - jQuery Reload</a></p>
+</article>
+<article>
+<figure><a class="vlightbox3" href="https://www.jqueryscript.net/images/Simple-Customizable-jQuery-Loading-Animation-Plugin.jpg" title="Simple and Customizable jQuery Loading Animation Plugin"><img src="https://www.jqueryscript.net/small/images/Simple-Customizable-jQuery-Loading-Animation-Plugin.jpg" width="177" height="132" alt="Simple and Customizable jQuery Loading Animation Plugin"></a></figure>
+<p><a href="https://www.jqueryscript.net/loading/Simple-Customizable-jQuery-Loading-Animation-Plugin.html" rel="bookmark">Simple and Customizable jQuery Loading Animation Plugin</a></p>
+</article>
+
+<div class="clear"></div>
+</section>
+<section class="related">
+<h3>Add Your Review</h3>
+<div id="disqus_thread"></div>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+<div style="margin-top:15px"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2783044520727903"
+     crossorigin="anonymous"></script>
+<!-- jQuery_Below_Comment -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2783044520727903"
+     data-ad-slot="7748887728"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+</div>
+<div class="col-right">
+<aside>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2783044520727903"
+     crossorigin="anonymous"></script>
+<!-- jquery_sidebar -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2783044520727903"
+     data-ad-slot="5375124397"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<div class="clear"></div></aside>
+<aside>
+<h4>Categories:</h4>
+<ul class="category">
+<li><a href="https://www.jqueryscript.net/jquery-plugins/">All jQuery Plugins</a></li>
+<li><a href="https://www.jqueryscript.net/accordion/">Accordion</a> (139)</li>
+<li><a href="https://www.jqueryscript.net/animation/">Animation</a> (996)</li>
+<li><a href="https://www.jqueryscript.net/chart-graph/">Chart &amp; Graph</a> (200)</li>
+<li><a href="https://www.jqueryscript.net/css3-html5/">CSS3 &amp; Html5</a> (36)</li>
+<li><a href="https://www.jqueryscript.net/form/">Form</a> (1419)</li>
+<li><a href="https://www.jqueryscript.net/gallery/">Gallery</a> (281)</li>
+<li><a href="https://www.jqueryscript.net/layout/">Layout</a> (478)</li>
+<li><a href="https://www.jqueryscript.net/lightbox/">LightBox</a> (519)</li>
+<li><a href="https://www.jqueryscript.net/loading/">Loading</a> (309)</li>
+<li><a href="https://www.jqueryscript.net/menu/">Menu &amp; Nav</a> (941)</li>
+<li><a href="https://www.jqueryscript.net/mobile/">Mobile</a> (39)</li>
+<li><a href="https://www.jqueryscript.net/other/">Others</a> (2745)</li>
+<li><a href="https://www.jqueryscript.net/rotator/">Rotator</a> (94)</li>
+<li><a href="https://www.jqueryscript.net/slider/">Slider</a> (812)</li>
+<li><a href="https://www.jqueryscript.net/slideshow/">Slideshow</a> (309)</li>
+<li><a href="https://www.jqueryscript.net/social-media/">Social Media</a> (190)</li>
+<li><a href="https://www.jqueryscript.net/table/">Table</a> (341)</li>
+<li><a href="https://www.jqueryscript.net/text/">Text</a> (545)</li>
+<li><a href="https://www.jqueryscript.net/time-clock/">Time &amp; Clock</a> (494)</li>
+<li><a href="https://www.jqueryscript.net/tooltip/">Tooltip</a> (150)</li>
+<li><a href="https://www.jqueryscript.net/zoom/">Zoom</a> (148)</li>
+</ul>
+<div class="clear"></div>
+</aside>
+<aside>
+<h4>Most Popular In This Category:</h4>
+<div class="tab-panel"><a href="javascript:;" id="tab_btn1" onmouseover="showtab(1,'tab',2)" class="current-tab">Most Popular</a><a href="javascript:;" id="tab_btn2" onmouseover="showtab(2,'tab',2)">Recommended</a>
+<div class="clear"></div>
+</div>
+<ul class="popular-post" id="tab_sub1">
+<li><a href="https://www.jqueryscript.net/loading/Dynamic-Circular-Progress-Bar-with-jQuery-CSS3.html">Dynamic Circular Progress Bar with jQuery and CSS3</a><span>
+123018 views - <time class="timeago" datetime="2015-09-15T06:05:40Z">09/15/2015</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/jQuery-Ajax-Loading-Overlay-with-Loading-Text-Spinner-Plugin.html">jQuery Ajax Loading Overlay with Loading Text and Spinner Plugin</a><span>
+118421 views - <time class="timeago" datetime="2014-02-20T01:00:00Z">02/20/2014</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Automatic-Page-Load-Ajax-Request-Progress-Bar-Pace-js.html">Automatic Page Load & Ajax Request Progress Bar - Pace.js</a><span>
+75739 views - <time class="timeago" datetime="2021-03-03T05:47:00Z">03/03/2021</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Animated-Circle-Progress-Bar-with-jQuery-SVG-asPieProgress.html">Animated Circle Progress Bar with jQuery and SVG - asPieProgress</a><span>
+73766 views - <time class="timeago" datetime="2017-09-11T23:03:00Z">09/11/2017</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Form-Submit-Buttons-with-Built-in-Loading-Indicators-Ladda.html">Form Submit Buttons with Built-in Loading Indicators - Ladda</a><span>
+70121 views - <time class="timeago" datetime="2019-08-09T13:18:00Z">08/09/2019</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Create-Percentage-Circles-with-jQuery-CSS3-percircle-js.html">Create Percentage Circles with jQuery and CSS3 - percircle.js</a><span>
+65377 views - <time class="timeago" datetime="2022-01-19T01:27:00Z">01/19/2022</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/jQuery-Plugin-For-Creating-Loading-Overlay-with-CSS3-Animations-waitMe.html">jQuery Plugin For Creating Loading Overlay with CSS3 Animations - waitMe</a><span>
+58794 views - <time class="timeago" datetime="2017-10-31T06:00:00Z">10/31/2017</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Buttons-with-Built-in-Loading-Indicators-For-Bootsrap-3-Ladda-Bootstrap.html">Buttons with Built-in Loading Indicators For Bootstrap 3 - Ladda Bootstrap</a><span>
+57025 views - <time class="timeago" datetime="2014-10-28T06:20:00Z">10/28/2014</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Simple-Circle-Progress-Indicator-Plugin-with-jQuery-CSS3-Progress-Circle.html">Simple Circle Progress Indicator Plugin with jQuery and CSS3 - Progress Circle</a><span>
+51899 views - <time class="timeago" datetime="2014-04-28T08:40:39Z">04/28/2014</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Ajax-Progress-Bar-Plugin-with-jQuery-Bootstrap-progressTimer.html">Ajax Progress Bar Plugin with jQuery and Bootstrap - progressTimer</a><span>
+50443 views - <time class="timeago" datetime="2015-06-09T01:49:00Z">06/09/2015</time></span></li>
+
+<li class="li-last"><a href="https://www.jqueryscript.net/popular/" rel="nofollow">More Popular Plugins</a></li>
+</ul>
+<ul class="popular-post" id="tab_sub2" style="display:none;">
+<li><a href="https://www.jqueryscript.net/loading/jQuery-Plugin-For-Detecting-Images-Have-Been-Loaded-imagesLoaded.html">jQuery Plugin For Detecting Image Have Been Loaded - imagesLoaded</a><span>
+11282 views - <time class="timeago" datetime="2022-07-04T01:44:00Z">07/04/2022</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Create-Percentage-Circles-with-jQuery-CSS3-percircle-js.html">Create Percentage Circles with jQuery and CSS3 - percircle.js</a><span>
+65377 views - <time class="timeago" datetime="2022-01-19T01:27:00Z">01/19/2022</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Ajaxifying-Your-Website-jQuery-Ajaxify.html">jQuery Plugin For Ajaxifying Your Website - Ajaxify</a><span>
+8864 views - <time class="timeago" datetime="2020-11-30T00:04:00Z">11/30/2020</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Google-Like-jQuery-Slim-Progress-Bar-Plugin-NProgress.html">Google Like Slim Progress Bar Plugin - NProgress</a><span>
+21298 views - <time class="timeago" datetime="2020-04-19T06:29:00Z">04/19/2020</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Image-Loading-Animation-Plugin-with-jQuery-CSS3-LoadGo.html">Image Loading Animation Plugin with jQuery and CSS3 - LoadGo</a><span>
+7640 views - <time class="timeago" datetime="2019-11-10T09:24:00Z">11/10/2019</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Form-Submit-Buttons-with-Built-in-Loading-Indicators-Ladda.html">Form Submit Buttons with Built-in Loading Indicators - Ladda</a><span>
+70121 views - <time class="timeago" datetime="2019-08-09T13:18:00Z">08/09/2019</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Image-Lazy-Loader-Plugin-for-jQuery-lazyload.html">Image Lazy Loader Plugin for jQuery - lazyload</a><span>
+12193 views - <time class="timeago" datetime="2019-04-12T08:28:00Z">04/12/2019</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Lightweight-Powerful-jQuery-Image-Lazy-Load-Plugin-lazyload.html">Lightweight & Powerful jQuery Image Lazy Load Plugin - lazyload</a><span>
+4100 views - <time class="timeago" datetime="2018-09-21T05:00:00Z">09/21/2018</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/spin-js-Animated-CSS3-Loading-Spinner.html">spin.js - Animated CSS3 Loading Spinner</a><span>
+27678 views - <time class="timeago" datetime="2018-07-11T11:26:00Z">07/11/2018</time></span></li>
+<li><a href="https://www.jqueryscript.net/loading/Trigger-Callbacks-When-Images-Have-Been-Loaded-jQuery-waitForImages.html">Trigger Callbacks When Images Have Been Loaded - jQuery waitForImages</a><span>
+3142 views - <time class="timeago" datetime="2018-02-14T02:20:00Z">02/14/2018</time></span></li>
+
+<li class="li-last"><a href="https://www.jqueryscript.net/recommended/" rel="nofollow">More Recommended Plugins</a></li>
+</ul>
+<div class="clear"></div>
+</aside>
+<div id="ezoic-pub-ad-placeholder-109"> </div>
+<aside>
+<h4>Get Free Updates</h4>
+<style type="text/css">
+#mc_embed_signup form{display:block;position:relative;text-align:left;padding:10px 0 10px 3%}#mc_embed_signup h2{font-weight:bold;padding:0;margin:15px 0;font-size:1.4em}#mc_embed_signup input{border:1px solid #999;-webkit-appearance:none}#mc_embed_signup input[type=checkbox]{-webkit-appearance:checkbox}#mc_embed_signup input[type=radio]{-webkit-appearance:radio}#mc_embed_signup input:focus{border-color:#333}#mc_embed_signup .button{clear:both;background-color:#aaa;border:0 none;border-radius:4px;letter-spacing:.03em;color:#fff;cursor:pointer;display:inline-block;font-size:15px;height:32px;line-height:32px;margin:0 5px 10px 0;padding:0;text-align:center;text-decoration:none;vertical-align:top;white-space:nowrap;width:auto;transition:all .23s ease-in-out 0}#mc_embed_signup .button:hover{background-color:#777}#mc_embed_signup .small-meta{font-size:11px}#mc_embed_signup .nowrap{white-space:nowrap}#mc_embed_signup .clear{clear:none;display:inline}#mc_embed_signup label{display:block;font-size:16px;padding-bottom:10px;font-weight:bold}#mc_embed_signup input.email{font-family:"Open Sans","Helvetica Neue",Arial,Helvetica,Verdana,sans-serif;font-size:15px;display:block;padding:0 .4em;margin:0 4% 10px 0;min-height:32px;width:58%;min-width:130px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}#mc_embed_signup input.button{display:block;width:35%;margin:0 0 10px 0;min-width:90px}#mc_embed_signup div#mce-responses{float:left;top:-1.4em;padding:0 .5em 0 .5em;overflow:hidden;width:90%;margin:0 5%;clear:both}#mc_embed_signup div.response{margin:1em 0;padding:1em .5em .5em 0;font-weight:bold;float:left;top:-1.5em;z-index:1;width:80%}#mc_embed_signup #mce-error-response{display:none}#mc_embed_signup #mce-success-response{color:#529214;display:none}#mc_embed_signup label.error{display:block;float:none;width:auto;margin-left:1.05em;text-align:left;padding:.5em 0}#mc_embed_signup{background:#fff;clear:left;font:14px Helvetica,Arial,sans-serif;width:298px;border:2px dotted red}
+</style>
+<div id="mc_embed_signup">
+<form action="//jqueryscript.us6.list-manage.com/subscribe/post?u=d4d8a0f45ce17e5ef2708771f&amp;id=06a33bc6c9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+  <label for="mce-EMAIL">Get Weekly Email on latest Web & Graphic Design freebies. No spam, we promise!</label>
+  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d4d8a0f45ce17e5ef2708771f_06a33bc6c9" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+<!--End mc_embed_signup-->
+</aside>
+<aside>
+<aside>
+<h4>You Might Like:</h4>
+<div class="tags"><a href="https://www.jqueryscript.net/tags.php?/bootstrap 5/" class="tags-block">Bootstrap 5</a><a href="https://www.jqueryscript.net/tags.php?/Bootstrap 4/" class="tags-block">Bootstrap 4</a><a href="https://www.jqueryscript.net/tags.php?/Carousel/" class="tags-block">Carousel</a><a href="https://www.jqueryscript.net/tags.php?/countdown/" class="tags-block">Countdown</a><a href="https://www.jqueryscript.net/tags.php?/Drop Down Menu/" class="tags-block">Dropdown Menu</a><a href="https://www.jqueryscript.net/tags.php?/form validation/" class="tags-block">Form Validation</a><a href="https://www.jqueryscript.net/tags.php?/date picker/" class="tags-block">Date Picker</a><a href="https://www.jqueryscript.net/tags.php?/Magnifier/" class="tags-block">Magnifier</a><a href="https://www.jqueryscript.net/tags.php?/Modal/" class="tags-block">Modal</a><a href="https://www.jqueryscript.net/tags.php?/calendar/" class="tags-block">Calendar</a><a href="https://www.jqueryscript.net/tags.php?/news ticker/" class="tags-block">News Ticker</a><a href="https://www.jqueryscript.net/tags.php?/bootstrap/" class="tags-block">Bootstrap</a><a href="https://www.jqueryscript.net/tags.php?/parallax/" class="tags-block">Parallax</a><a href="https://www.jqueryscript.net/tags.php?/Time Picker/" class="tags-block">Time Picker</a><a href="https://www.jqueryscript.net/tags.php?/popup/" class="tags-block">Popup</a><a href="https://www.jqueryscript.net/tags.php?/notification/" class="tags-block">Notification</a><a href="https://www.jqueryscript.net/tags.php?/progress bar/" class="tags-block">Progress Bar</a><a href="https://www.jqueryscript.net/tags.php?/Range Slider/" class="tags-block">Range Slider</a><a href="https://www.jqueryscript.net/tags.php?/gauge/" class="tags-block">Gauge</a><a href="https://www.jqueryscript.net/tags.php?/side menu/" class="tags-block">Side Menu</a><a href="https://www.jqueryscript.net/tags.php?/tabs/" class="tags-block">Tabs</a><a href="https://www.jqueryscript.net/tags.php?/Timeline/" class="tags-block">Timeline</a><a href="https://www.jqueryscript.net/tags.php?/tree view/" class="tags-block">Tree View</a><a href="https://www.jqueryscript.net/tags.php?/video/" class="tags-block">Video</a>
+<div class="clear"></div>
+</div>
+</aside>
+
+<aside>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2783044520727903"
+     crossorigin="anonymous"></script>
+<!-- jquery_bottom_of_sidebar -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2783044520727903"
+     data-ad-slot="8177976298"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<div class="clear"></div>
+</aside>
+<!-- BuySellAds Ad Code -->
+<script type="text/javascript">
+try {
+  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+    return true;
+  }).catch(function(e) {
+    var carbonScript = document.createElement("script");
+    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+    carbonScript.id = "_carbonads_js";
+    document.getElementById("carbon-block").appendChild(carbonScript);
+  });
+} catch (error) {
+  console.log(error);
+}
+</script>
+<!-- End BuySellAds Ad Code -->
+</div>
+
+<div class="clear"></div>
+<div class="sub-footer">
+<aside>
+<h4>About jQuery Script</h4>
+<p><a href="https://www.jqueryscript.net">Free jQuery Plugins and Tutorials</a> - One of the BEST jQuery websites  that provide web designers and developers with a simple way to preview and download a variety of Free <em>jQuery Plugins</em>. <a href="https://www.jqueryscript.net/about/" rel="nofollow">More</a>...</p>
+</aside>
+<aside>
+<h4>Most Popular Categories</h4>
+<ul>
+<li><a href="https://www.jqueryscript.net/slider/">jQuery Slider Plugins</a></li>
+<li><a href="https://www.jqueryscript.net/slideshow/">jQuery Slideshow Plugins</a></li>
+<li><a href="https://www.jqueryscript.net/menu/">jQuery Menu Plugins</a></li>
+<li><a href="https://www.jqueryscript.net/table/">jQuery Table Plugins</a></li>
+<li><a href="https://www.jqueryscript.net/gallery/">jQuery Gallery Plugins</a></li>
+</ul>
+</aside>
+<aside>
+<h4>Keep in touch with us</h4>
+<div class="social"><a href="https://www.facebook.com/jqueryscript" rel="nofollow"><img src="/images/f.png" alt="Follow us on facebook" width="32" height="32"></a><a href="https://twitter.com/jqueryscript" rel="nofollow"><img src="/images/t.png" alt="Follow us on twitter" width="32" height="32"></a><a href="https://pinterest.com/titanui/jquery-plugins/" rel="nofollow"><img src="/images/p.png" alt="Follow us on pinterest" width="32" height="32"></a><a href="https://feeds.feedburner.com/jquery-script" rel="nofollow"><img src="/images/r.png" alt="RSS" width="32" height="32"></a></div>
+<h4>Site Links</h4>
+<a href="https://www.jqueryscript.net/submit/" rel="nofollow">Submit Plugins & News</a> / <a href="https://www.jqueryscript.net/contact/" rel="nofollow">Contact us</a>
+</aside>
+<div class="clear"></div>
+</div>
+
+</div>
+<footer>
+<p>CDN-Hosted jQuery Library: <code>&lt;script src=&quot;//code.jquery.com/jquery-latest.min.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>© Copyright 2012-2022 <a href="https://www.jqueryscript.net">jQueryScript.Net</a> - <a href="https://www.jqueryscript.net/privacy/" rel="nofollow">Privacy Policy</a> - <a href="https://www.jqueryscript.net/sitemap.xml" rel="nofollow">Sitemap</a> - <a href="https://feeds.feedburner.com/jquery-script" rel="nofollow">RSS Feed</a></p>
+</footer>
+<script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
+<script>
+(function(){
+  if(typeof _bsa !== 'undefined' && _bsa) {
+      // format, zoneKey, segment:value, options
+      _bsa.init('flexbar', 'CK7D42QW', 'placement:jqueryscriptnet');
+    }
+})();
+</script>
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/jquery-1.12.4.min.js"><\/script>')</script>
+<script src="/js/app.2022.min.js?ver202212"></script>
+<script>
+jQuery(document).ready(function() {
+  jQuery("time.timeago").timeago();
+});
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script src="/codepretty/scripts/shCore.js"></script>
+<script src="/codepretty/scripts/shAutoloader.js"></script>
+<script>
+function path()
+{
+var args = arguments,
+result = []
+;
+for(var i = 0; i < args.length; i++)
+result.push(args[i].replace('@', '/codepretty/scripts/'));
+return result
+};
+SyntaxHighlighter.autoloader.apply(null, path(
+'css                    @shBrushCss.js',
+'js jscript javascript  @shBrushJScript.js',
+'xml xhtml xslt html    @shBrushXml.js'
+));
+SyntaxHighlighter.defaults['auto-links'] = true;
+SyntaxHighlighter.defaults['collapse'] = false;
+SyntaxHighlighter.defaults['first-line'] = 1;
+SyntaxHighlighter.defaults['gutter'] = true;
+SyntaxHighlighter.defaults['smart-tabs'] = true;
+SyntaxHighlighter.defaults['tab-size'] = 2;
+SyntaxHighlighter.defaults['toolbar'] = true;
+SyntaxHighlighter.config.tagName = "pre";
+SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'jqueryscript'; // required: replace example with your forum shortname
+			var disqus_title = "Retina-ready Image Lazy Loader Plugin - jQuery lazy-images";
+			var disqus_url = 'https://www.jqueryscript.net/loading/retina-image-lazy-loader.html';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+<noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<script src="https://www.jqueryscript.net/plus/count.php?aid=9786&mid=1" language="javascript" type="application/javascript"></script>
+</body>
+</html>
