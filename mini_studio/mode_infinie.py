@@ -8,6 +8,12 @@ from classe import *
 # Initialize Pygame
 pygame.init()
 
+# Charger l'icône
+icon = pygame.image.load("assets/alien_war_icon.png")
+
+# Définir l'icône de la fenêtre
+pygame.display.set_icon(icon)
+
 score = 0
 
 # ----------------------------------- Récupérer la valeur dans Vaisseau.txt ----------------------------- #

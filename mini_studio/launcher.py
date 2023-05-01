@@ -14,6 +14,12 @@ SCREEN_HEIGHT = 600
 
 pygame.display.set_caption("Alien Assault")
 
+# Charger l'icône
+icon = pygame.image.load("assets/alien_war_icon.png")
+
+# Définir l'icône de la fenêtre
+pygame.display.set_icon(icon)
+
 # Lecture de l'état de l'image écran à partir du fichier
 try:
     with open("Save_Stats/Screen_Stats.txt", "r") as f:
